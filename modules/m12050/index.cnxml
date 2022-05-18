@@ -1,0 +1,73 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+	<title>Step 3: Flexible Pulse Width Controller</title>
+	<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>83b0e0ba-8baa-4fd1-9614-b705eff519d4</md:uuid>
+</metadata>
+	<content>
+		<para id="p1">Redesign the PicoBlaze design so that pulse width high and lows can be controlled independently.  Perform this task using <term>INPUT</term> instruction and allocating two input registers- one for high pulse and another for low pulse widths.  Modify the assembler code accordingly, assemble it, and assign to the ROM table.  Run the simulation and observe the pulse output.<list list-type="enumerated" id="l1">
+				<item>Modify the assembler code to get high pulse and low pulse widths selection independently <note type="" id="n1">One method is to define constants in the code and have the loop re-written so that one part of it generates high pulse and another part of the loop to generate low output.  Another method is to implement some kind of multiplexer with a register to define the high output pulse and a register to define the low output pulse width. </note><note id="n2" type="Hint-1"><label>Hint-1</label>Change the code so that you use the INPUT instruction to access the two registers.  For example, <code display="block" id="idm20688">INPUT input_high_pw, input_high_port</code>which reads the high value from the <term>input_high_port </term>address</note><exercise id="ex1">
+						<problem id="idp417504">
+							<para id="p2">Think about what address the registers will be at and how you will decode the address.  How will the address be qualified?  </para>
+						</problem>
+						<solution id="idm6193888">
+							<para id="p3"><code display="block" id="idm6783920">;simple example of PWM using picoblaze
+; 
+;Naming ports and assigning values
+;
+CONSTANT pw_port, 02        ;
+CONSTANT input_high_port, 01        ;pulsewidth high value port
+CONSTANT input_low_port, 00        ;pulsewidth low value port
+
+;
+;Naming registers 
+;
+NAMEREG s01, pw_data               	;used to form base of software delay loops
+NAMEREG s02, input_high_pw             ;register to store pulse width high value
+NAMEREG s03, input_low_pw              ;register to store pulse width low value
+NAMEREG s04, pw_high_delay_reg         ;used to form base of software delay loops
+NAMEREG s05, pw_low_delay_reg          ;used to form base of software delay loops
+                                                      
+;
+;Start of program and initialisation of displays
+; 
+
+start  	LOAD pw_high_delay_reg, 00	;lets clear the registers
+        	LOAD pw_low_delay_reg, 00	;lets clear the registers
+          	        
+	OUTPUT pw_data, pw_port  	;lets set the data to be 0 for now
+			   
+;read the high and low values
+	INPUT input_high_pw, input_high_port   ;read the high value
+	LOAD pw_data,00			;load the register with the data to be output
+	INPUT input_low_pw, input_low_port     ;read the low value
+	 ;start the loops
+load_values  	LOAD pw_high_delay_reg, input_high_pw	;load pulse width register 
+	LOAD pw_low_delay_reg, input_low_pw
+
+	;do the high pulse width
+pw_high_loop  SUB pw_high_delay_reg, 01              ;little 
+                     	JUMP NZ, pw_high_loop              	 ; 
+	XOR pw_data, 01				 ;invert the data
+	OUTPUT pw_data, pw_port			 ; 
+			   
+	;do the low pulse width
+pw_low_loop  SUB pw_low_delay_reg, 01                ; little 
+                     	JUMP NZ, pw_low_loop              	 ; 
+	XOR pw_data, 01				 ;invert the data
+	OUTPUT pw_data, pw_port
+		   
+                     	JUMP load_values; start again
+</code></para>
+						</solution>
+					</exercise></item>
+				<item>Add two constants, necessary registers, and additional control strobes </item>
+				<item>Assemble the source code using the perl command</item>
+				<item>Assign the code to the ROM table</item>
+				<item>Modify the design as necessary </item>
+				<item>Run the simulation and observe that the output pulse width has changed</item>
+				<item>Save the model and close MATLAB</item>
+			</list></para>
+		<section id="sec2">
+			<title>Conclusion</title>
+			<para id="p6">In this lab you learned how to develop a PicoBlaze design by using simple pulse width application.  You also learned how to add external registers to the design and pass the information to the program.</para></section>
+	</content>
+</document>

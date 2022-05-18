@@ -1,0 +1,33 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Designing Using the PicoBlaze Microcontroller</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>e52d6d51-2fec-4d88-992b-ed7fb8e75aa1</md:uuid>
+</metadata>
+
+    <content>
+    <section id="s1">
+      <title>Introduction</title>
+      <para id="p1"><!-- Insert module text here -->In this lab you are shown how to create an assembler source file that will allow you to change the pulse width of an output pulse from a PicoBlaze™ microcontroller, compile it, run the code within System Generator, and simulate it.  
+      <note type="" id="n1">There are completed examples in c:\xup\workshops\dsp_flow\labs\lab9\lab9_soln.</note>
+      </para>
+    </section>
+    <section id="s2">
+      <para id="p2">After completing this lab, you will be able to:<list id="l1">
+          <item>Create assembler source code for a PicoBlaze controller</item>
+          <item>Compile the source code for the PicoBlaze controller</item>
+          <item>Simulate the source code and the PicoBlaze controller and view the output response from the controller</item>
+          <item>Change the assembler code to allow the pulse width high and lows to be defined individually</item>
+        </list></para>
+    </section>
+    <section id="s3">
+      <title>Design Description</title>
+      <para id="p3">The design example in this lab is made of a single PicoBlaze controller. The source code generates an output from the controller whose pulse width is controlled by a constant held in a PicoBlaze register.  This controller, and the code, is simulated using System Generator.</para>
+    </section>
+    <section id="s4">
+      <title>Procedure</title>
+      <para id="p4">The source code will be generated and compiled. A Perl script will be run to compile the code and to load it into the workspace.</para>
+      <para id="p5">This lab comprises three primary steps.  You will develop the assembler code for a simple pulse generation application running on PicoBlaze, and assemble it in Step 1.  Step 1 also shows you how to assign the program to ROM and how to simulate the design.  Step 2 requires you to simulate the design.  In Step 3, you are asked to add additional logic and modify the source code to generate pulses of different duty cycles.  Below each general instruction for a given procedure, you will find accompanying step-by-step directions and illustrated figures providing more detail for performing the general instruction. If you feel confident about a specific instruction, feel free to skip the step-by-step directions and move on to the next general instruction in the procedure.<note type="" id="n2">If you are unable to complete the lab at this time, you can download the lab files for this module from the Xilinx University Program site at <link url="http://university.xilinx.com">http://university.xilinx.com</link></note>
+      </para>
+    </section>
+  </content>
+  
+</document>

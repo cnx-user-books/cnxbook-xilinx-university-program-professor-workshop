@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Step 2: Simulate Pulse Width Controller</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>8137be40-4555-4fb1-b39b-01ed0c6be0d4</md:uuid>
+</metadata>
+
+    <content>
+    <para id="p1">Set the run-mode switch to down.  Set the simulation run time to <term>500</term>.  Run the simulation and observe the pulse output. <!-- Insert module text here --></para>
+    <para id="p2"><list list-type="enumerated" id="l1">
+        <item>Make sure the run-mode switch is positioned down to run it in continuous mode. 
+        <note type="" id="n1">To make the simulation run continuously, flip the switch driving "Single-Step Simulation" down; when the switch is up, the simulation pauses after every clock cycle. Note each microcontroller instruction takes two cycles. The block named "PicoBlaze Instruction Display" shows which instruction is executing at the moment. Turning on the microcontroller's  "Display Microcontroller Internals" checkbox causes internal values to be made visible.</note></item>
+        <item>Set <term>Simulation </term>-&gt; <term>simulation parameters</term> to run for <term>500</term></item>
+        <item>Hit the Run button so the entire simulation is running.  <note type="" id="n2">The simulation results of results1 scope will be seen as shown below</note><figure orient="horizontal" id="fig19-3">
+            <title>Figure 19-3 Simulation Results of Continuous Run</title>
+            <media id="idm1446448" alt=""><image src="http://cnx.rice.edu/Members/adrianv/fig19-3.gif" mime-type="image/gif"/></media>
+            <caption>Channel 1 is the output pulse | Channel 2 is the port ID |
+Channel 3 is the read strobe | Channel 4 is the write strobe.</caption>
+          </figure></item>
+        <item>Change the <term>pulse_width</term> constant to <term>8</term> in the assembler code and re-compile the code using the perl script</item>
+        <item>Run the simulation and confirm the output pulse width has changed.  <note type="" id="n4">If the switch is set in the continuous mode and the input-value is set to 0 then the design run continuously.</note><exercise id="ex1">
+            <problem id="idm807376">
+              <para id="p3">How can the design be changed so that in continous mode you can specify the number of cycles it runs for can be changed?</para>
+            </problem>
+            <solution id="idm1614816">
+              <para id="p4">Use the STEP source and specify the amount  of time the output is Low for</para>
+            </solution>
+          </exercise></item>
+        <item>Implement this change in the design so you can run for <term>100 </term>clock cycles</item>
+      </list></para>
+  </content>  
+</document>

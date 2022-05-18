@@ -1,0 +1,48 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Step 1: Generate Assembler Code for Pulse Width Controller</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>bf4b9897-3473-410c-8d58-11003d089446</md:uuid>
+</metadata>
+
+    <content>
+    <para id="p1">Write an assembler source code (shown in detail step 3, below) and save it as <term>Lab9.psm</term>.  Assemble the source code using perl command listed in detailed step 5.  Open <term>lab9.mdl</term> model from <term>c:/xup/workshops/dsp_flow/labs/lab9</term> and assign<term> fill_lab9_program_store</term> to the ROM table.
+    <list list-type="enumerated" id="l1">
+        <item>Open the MATLAB command window by double-clicking the MATLAB icon on your desktop, or go to Start Menu -&gt;Programs -&gt;MATLAB 6.5 -&gt; MATLAB 6.5 </item>
+        <item>Change directory to <term>c:/xup/workshops/dsp_flow/labs/lab9/</term>:  Type <code display="block" id="idm8890304">cd c:/xup/workshops/dsp_flow/labs/lab9/</code> in the command window.</item>
+        <item>Download the the code for <link url="http://cnx.rice.edu/Members/adrianv/Lab9.psm">Lab9.psm</link> here.</item>
+        <item>Save the file as <term>Lab9.psm</term> in <term>c:/xup/workshops/dsp_flow/labs/lab9</term></item>
+        <item>Type the following command in MATLAB command window: <code display="block" id="idm2051968">perl('xlpbsmble.pl','-p','Lab9.psm')</code><note type="" id="n3">This command will assemble several files and create sub-directories.</note><exercise id="ex1">
+            <problem id="idm2282000">
+              <para id="p2">What directories and files are produced as the result of running the perl command? </para>
+            </problem>
+            <solution id="idm8991152">
+              <para id="p3"><list list-type="bulleted" id="l2">
+                  <item>fill_lab9_program_store – an M-file</item>
+                  <item>lab9_psm_results – folder which contains several files</item>
+                  <item>assembler – results file</item>
+                  <item>CONSTANT -</item>
+                  <item>LAB9 – coe file</item>
+                  <item>LAB9 – text file</item>
+                  <item>LAB9.vhd – vhdl model file</item>
+                  <item>LAB9.DEC – DEC file</item>
+                  <item>LAB9.FMT – FMT file</item>
+                  <item>LAB9.HEX – HEX file</item>
+                  <item>lab9.psm – source file</item>
+                  <item>LABELS – text file</item>
+                  <item>Several PASS files</item>
+                  <item>ROM_form – coe file</item>
+                  <item>ROM_form – vhdl model file</item>
+                  <item>Wrapkcpsm2.bat – batch file</item>
+                </list></para>
+            </solution>
+          </exercise></item>
+        <item>Open <term>Lab9.mdl </term>file.  It will look as shown below in Figure 19-1.<figure orient="horizontal" id="fig19-1">
+            <title>Figure 19-1: PicoBlaze Based Design</title>
+            <media id="idm2055088" alt=""><image src="http://cnx.rice.edu/Members/adrianv/fig19-1.gif" mime-type="image/gif"/></media>
+          </figure></item>
+        <item>Double-click the<term>ROM </term>block and change the <term>Initial Value Vector</term> as to use the <term>fill_lab9_program_store</term></item>
+      </list><figure orient="horizontal" id="fig19-2">
+        <title>Figure 19-2: Assigning Program File to the ROM</title>
+        <media id="idm238880" alt=""><image src="http://cnx.rice.edu/Members/adrianv/fig19-2.gif" mime-type="image/gif"/></media>
+      </figure></para>
+  </content>  
+</document>
